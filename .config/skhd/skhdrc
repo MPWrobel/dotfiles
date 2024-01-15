@@ -1,0 +1,25 @@
+ctrl + alt - left	: yabai -m window --swap west
+ctrl + alt - down	: yabai -m window --swap south
+ctrl + alt - up		: yabai -m window --swap north
+ctrl + alt - right	: yabai -m window --swap east
+
+ctrl + shift - left	 : yabai -m window --warp west
+ctrl + shift - down	 : yabai -m window --warp south
+ctrl + shift - up	 : yabai -m window --warp north
+ctrl + shift - right : yabai -m window --warp east
+
+ctrl + alt - o : yabai -m space --layout bsp
+ctrl + alt - p : yabai -m space --layout float
+
+ctrl + alt - s : yabai -m window --stack recent
+ctrl + alt - f : yabai -m window --toggle float
+ctrl + alt - t : yabai -m window --toggle topmost
+
+ralt - left	 : yabai -m window --focus west
+ralt - down	 : yabai -m window --focus south
+ralt - up	 : yabai -m window --focus north
+ralt - right : yabai -m window --focus east
+
+cmd - return : /Applications/MacPorts/WezTerm.app/Contents/MacOS/wezterm start
+
+# cmd + ctrl - s : pkill say; pbpaste | iconv -f UTF-8-MAC -t UTF-8 | say -r 250
