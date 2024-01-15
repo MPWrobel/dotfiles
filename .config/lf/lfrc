@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set drawbox
+set icons
+set cursorparentfmt "\033[7;90m"
+set cursorpreviewfmt "\033[7;90m"
+set sixel true
+
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+set ratios 1:2
+
+cmd open ${{
+	case $(file --mime-type -Lb "$f") in
+		text/*|application/json|inode/x-empty|application/gzip) nvim "$fx";;
+		*) open "$fx";;
+	esac
+}}

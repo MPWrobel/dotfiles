@@ -1,0 +1,9 @@
+set chafasixel
+
+preview bat text/* {{
+	bat --color=always --decorations=never --tabs=4 "$f"
+}}
+
+preview gzcat_jq application/gzip {{
+    gzcat "$f" | jq -C
+}}
