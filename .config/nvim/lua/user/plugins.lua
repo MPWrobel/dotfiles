@@ -2,6 +2,10 @@ require 'user.bootstrap'
 require('lazy').setup {
 	'tpope/vim-eunuch',
 
+	-- Common dependencies
+	'nvim-lua/plenary.nvim',
+	'nvim-tree/nvim-web-devicons',
+
 	-- Colorscheme
 	{
 		'mcchrish/zenbones.nvim',
@@ -14,11 +18,6 @@ require('lazy').setup {
 	-- Git integration
 	'sindrets/diffview.nvim',
 	{ 'NeogitOrg/neogit', config = true },
-
-
-	-- Common dependencies
-	'nvim-lua/plenary.nvim',
-	'nvim-tree/nvim-web-devicons',
 
 	-- Language specific
 	'SidOfc/mkdx',
