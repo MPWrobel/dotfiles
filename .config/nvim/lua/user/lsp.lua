@@ -2,6 +2,18 @@ local lspconfig = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+mason_lspconfig.setup {
+	ensure_installed = {
+		'cssls',
+		'html',
+		'lua_ls',
+		'pylsp',
+		'texlab',
+		'tsserver',
+		'vimls',
+	}
+}
+
 local function lsp_attach(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

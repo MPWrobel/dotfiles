@@ -75,17 +75,6 @@ require('lazy').setup {
 	{ 'williamboman/mason.nvim',         config = true },
 	{
 		'williamboman/mason-lspconfig.nvim',
-		opts = {
-			ensure_installed = {
-				'cssls',
-				'html',
-				'lua_ls',
-				'pylsp',
-				'texlab',
-				'tsserver',
-				'vimls',
-			}
-		},
 		config = function()
 			require 'user.lsp'
 		end
