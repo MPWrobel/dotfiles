@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wget "http:$(curl "https://sci-hub.se/$1" -s | grep -o -m 1  "//.*\.pdf")"
