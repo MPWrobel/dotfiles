@@ -1,21 +1,30 @@
 local wezterm = require('wezterm')
+local font = wezterm.font
 
 local config = {
-	front_end = 'WebGpu',
+	front_end                    = 'WebGpu',
+	color_scheme                 = 'kanagawabones',
+	font                         = font 'JetBrains Mono',
+	font_rules                   = {
+		{
+			intensity = 'Bold',
+			font = font { family = 'JetBrains Mono', weight = 'ExtraBold' },
+		}
+	},
 	font_size                    = 18,
 	command_palette_font_size    = 18,
 	use_fancy_tab_bar            = false,
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom            = true,
-	window_background_opacity    = 0.75,
+	-- window_background_opacity    = 0.80,
 	macos_window_background_blur = 16,
 	window_decorations           = 'RESIZE',
-	harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0', 'zero' }
+	harfbuzz_features            = { 'calt=0', 'clig=0', 'liga=0', 'zero' }
 }
 
 local function split_nav(key, dir)
 	local function is_vim(pane)
-	  return pane:get_user_vars().IS_NVIM == 'true'
+		return pane:get_user_vars().IS_NVIM == 'true'
 	end
 	local function move_callback(key, dir)
 		return function(win, pane)
