@@ -18,10 +18,28 @@ dap.configurations.javascript = {
 	}
 }
 
-dap.adapters.c = {
-  type = 'executable',
-  command = '/opt/local/bin/lldb-vscode',
-  name = 'lldb'
+dap.adapters.codelldb = {
+	type = 'server',
+	port = "${port}",
+	executable = {
+		command = '/Users/marcin/.local/share/nvim/mason/packages/codelldb/codelldb',
+		args = { "--port", "${port}" },
+		-- On windows you may have to uncomment this:
+		-- detached = false,
+	}
+}
+
+dap.configurations.c = {
+	{
+		name = "Launch file",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+	},
 }
 
 -- function LJ()

@@ -34,6 +34,13 @@ set nowrap
 set linebreak
 set breakindent
 
+set list
+" set listchars=tab:\ \ ,lead:·,trail:·
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable
+
 " Remove search highlight
 nnoremap <silent> <Esc> <Cmd>noh<CR>
 
@@ -80,5 +87,8 @@ noremap z= <Cmd>Telescope spell_suggest<CR>
 " LaTeX
 noremap <Leader>vc <Cmd>VimtexCompile<CR>
 
+" Git
+noremap <Leader>g <Cmd>Neogit<CR>
+
 lua require 'user.plugins'
-colorscheme zenbones
+colorscheme kanagawabones

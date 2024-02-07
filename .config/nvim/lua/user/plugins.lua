@@ -1,6 +1,17 @@
 require 'user.bootstrap'
 require('lazy').setup {
 	'tpope/vim-eunuch',
+	{
+		'stevearc/aerial.nvim',
+		opts = {
+			on_attach = function(bufnr)
+				local keymap = vim.keymap
+				keymap.set('n', '<Leader>a', '<Cmd>AerialToggle!<CR>')
+				keymap.set('n', '{{', "<cmd>AerialPrev<CR>", { buffer = bufnr })
+				keymap.set('n', '}}', "<cmd>AerialNext<CR>", { buffer = bufnr })
+			end
+		},
+	},
 
 	-- Common dependencies
 	'nvim-lua/plenary.nvim',
@@ -11,13 +22,14 @@ require('lazy').setup {
 		'mcchrish/zenbones.nvim',
 		dependencies = { 'rktjmp/lush.nvim' },
 		config = function()
-			vim.g.zenbones_transparent_background = true
+			vim.g.forestbones = {}
+			vim.g.zenbones = { transparent_background = true }
 		end
 	},
 
 	-- Git integration
 	'sindrets/diffview.nvim',
-	{ 'NeogitOrg/neogit', config = true },
+	{ 'NeogitOrg/neogit',         config = true },
 
 	-- Language specific
 	'SidOfc/mkdx',
@@ -54,8 +66,8 @@ require('lazy').setup {
 	'windwp/nvim-ts-autotag',
 
 	-- Pairs
-	{ 'windwp/nvim-autopairs',    config = true },
-	{ 'kylechui/nvim-surround',   config = true },
+	{ 'windwp/nvim-autopairs',  config = true },
+	{ 'kylechui/nvim-surround', config = true },
 
 	-- LSP
 	'neovim/nvim-lspconfig',
