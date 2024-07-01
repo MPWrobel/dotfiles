@@ -62,3 +62,6 @@ source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/lf/lfcd.sh
 
 dl() { (cd ~/Downloads && yt-dlp $1) }
+
+source /opt/local/share/chruby/chruby.sh
+source /opt/local/share/chruby/auto.sh

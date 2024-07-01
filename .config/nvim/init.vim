@@ -34,7 +34,7 @@ set nowrap
 set linebreak
 set breakindent
 
-set list
+" set list
 " set listchars=tab:\ \ ,lead:·,trail:·
 
 set foldmethod=expr
@@ -64,7 +64,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-l><C-l> <C-l>
 
 " Save the buffer and run make
-noremap <Leader>m <Cmd>w<CR>:make!<CR>
+noremap <Leader>m <Cmd>w<CR>:Make<CR>
 
 " Scroll one line at a time
 noremap <ScrollWheelUp> <C-y>
@@ -91,4 +91,5 @@ noremap <Leader>vc <Cmd>VimtexCompile<CR>
 noremap <Leader>g <Cmd>Neogit<CR>
 
 lua require 'user.plugins'
+lua require 'user.commands'
 colorscheme kanagawabones

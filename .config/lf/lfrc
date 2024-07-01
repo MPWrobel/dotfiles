@@ -4,7 +4,6 @@ set drawbox
 set icons
 set cursorparentfmt "\033[7;90m"
 set cursorpreviewfmt "\033[7;90m"
-set sixel true
 
 set previewer ctpv
 set cleaner ctpvclear

@@ -16,6 +16,7 @@ require('lazy').setup {
 	-- Common dependencies
 	'nvim-lua/plenary.nvim',
 	'nvim-tree/nvim-web-devicons',
+	'nvim-neotest/nvim-nio',
 
 	-- Colorscheme
 	{
@@ -32,7 +33,14 @@ require('lazy').setup {
 	{ 'NeogitOrg/neogit',         config = true },
 
 	-- Language specific
+	'kaarmu/typst.vim',
 	'SidOfc/mkdx',
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function() vim.fn["mkdp#util#install"]() end,
+	},
 	'Glench/Vim-Jinja2-Syntax',
 	'Olical/conjure',
 	'folke/neodev.nvim',
@@ -103,6 +111,7 @@ require('lazy').setup {
 	},
 	{ 'rcarriga/nvim-dap-ui',            config = true },
 	{ 'theHamsta/nvim-dap-virtual-text', config = true },
+	{ 'leoluz/nvim-dap-go',              config = true },
 	{
 		'mfussenegger/nvim-dap-python',
 		config = function()

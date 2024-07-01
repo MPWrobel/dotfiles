@@ -4,6 +4,7 @@ export DISPLAY=:0
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 
+export GEM_HOME="$HOME/.gem/ruby/3.3.2"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk17/Contents/Home"
 export RUSTUP_HOME="$HOME/.local/share/rustup"
 export CARGO_HOME="$HOME/.local/share/cargo"

@@ -15,11 +15,12 @@ ctrl + alt - s : yabai -m window --stack recent
 ctrl + alt - f : yabai -m window --toggle float
 ctrl + alt - t : yabai -m window --toggle topmost
 
-ralt - left	 : yabai -m window --focus west
-ralt - down	 : yabai -m window --focus south
-ralt - up	 : yabai -m window --focus north
-ralt - right : yabai -m window --focus east
+ctrl - left	 : yabai -m window --focus west
+ctrl - down	 : yabai -m window --focus south
+ctrl - up	 : yabai -m window --focus north
+ctrl - right : yabai -m window --focus east
 
-cmd - return : /Applications/MacPorts/WezTerm.app/Contents/MacOS/wezterm start
+# cmd - return : /Applications/MacPorts/WezTerm.app/Contents/MacOS/wezterm start
+cmd - return : kitty -1 -d /Users/marcin
 
 # cmd + ctrl - s : pkill say; pbpaste | iconv -f UTF-8-MAC -t UTF-8 | say -r 250

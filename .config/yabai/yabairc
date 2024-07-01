@@ -14,6 +14,7 @@ yabai -m config			\
     right_padding	8 	\
     bottom_padding	8 	\
     window_gap		8 	\
-    layout			bsp
+    layout			bsp \
+	mouse_modifier  ctrl
 
 echo "yabai configuration loaded..."
