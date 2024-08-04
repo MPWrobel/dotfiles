@@ -42,7 +42,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias gping='graphping'
-alias v='nvim'
+alias ya='yazi'
 alias vi='nvim'
 alias rc='(cd ~/.config/zsh && nvim -o +only .zshrc .zshenv .zprofile)'
 alias virc='(cd ~/.config/nvim && nvim init.vim)'
@@ -60,8 +60,9 @@ alias st="cd $HOME/Sync"
 source /opt/local/share/fzf/shell/completion.zsh
 source /opt/local/share/fzf/shell/key-bindings.zsh
 source /opt/local/share/lf/lfcd.sh
+source $HOME/.local/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 dl() { (cd ~/Downloads && yt-dlp $1) }
 
-source /opt/local/share/chruby/chruby.sh
-source /opt/local/share/chruby/auto.sh
+eval "$(rbenv init - zsh)"
+eval "$(zoxide init zsh)"

@@ -1,6 +1,7 @@
 require 'user.bootstrap'
 require('lazy').setup {
 	'tpope/vim-eunuch',
+	'nvim-neotest/nvim-nio',
 	{
 		'stevearc/aerial.nvim',
 		opts = {
