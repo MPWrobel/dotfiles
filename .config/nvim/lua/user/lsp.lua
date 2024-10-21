@@ -1,52 +1,29 @@
-local lspconfig = require('lspconfig')
-local mason_lspconfig = require('mason-lspconfig')
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-mason_lspconfig.setup {
-	ensure_installed = {
-		'cssls',
-		'html',
-		'lua_ls',
-		'pylsp',
-		'texlab',
-		'tsserver',
-		'vimls',
-	}
-}
-
-local function lsp_attach(_, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-	local keymap = vim.keymap
-	local buf = vim.lsp.buf
-	local diagnostic = vim.diagnostic
-	local opts = { buffer = bufnr, noremap = true, silent = true }
-	keymap.set('n', 'gd', buf.definition, opts)
-	keymap.set('n', 'gD', buf.declaration, opts)
-	keymap.set('n', 'gi', buf.implementation, opts)
-	keymap.set('n', 'gr', buf.references, opts)
-	keymap.set('n', 'K', buf.hover, opts)
-	keymap.set('n', '<Leader>k', buf.signature_help, opts)
-	keymap.set('n', '<Leader>D', buf.type_definition, opts)
-	keymap.set('n', '<Leader>f', function() buf.format { async = true } end, opts)
-	keymap.set('n', '<Leader>rn', buf.rename, opts)
-	keymap.set('n', '<Leader>ca', buf.code_action, opts)
-	keymap.set('n', '<Leader>q', diagnostic.setloclist, opts)
-	keymap.set('n', '<Leader>e', diagnostic.open_float, opts)
-	keymap.set('n', '[d', diagnostic.goto_prev, opts)
-	keymap.set('n', ']d', diagnostic.goto_next, opts)
-end
+local lspconfig = require 'lspconfig'
+local mason = require 'mason'
+local mason_lspconfig = require 'mason-lspconfig'
+local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 local function handler(config)
 	local server_config = vim.tbl_deep_extend('keep', config, {
-		on_attach = lsp_attach,
-		capabilities = lsp_capabilities,
+		capabilities = cmp_nvim_lsp.default_capabilities(),
 	})
 	return function(server_name)
 		lspconfig[server_name].setup(server_config)
 	end
 end
 
+mason.setup {}
+mason_lspconfig.setup {
+	ensure_installed = {
+		'cssls',
+		'html',
+		'lua_ls',
+		-- 'pylsp',
+		'texlab',
+		'ts_ls',
+		'vimls',
+	}
+}
 mason_lspconfig.setup_handlers {
 	handler {},
 	cssls = handler {
@@ -55,27 +32,27 @@ mason_lspconfig.setup_handlers {
 	kotlin_language_server = handler {
 		root_dir = lspconfig.util.root_pattern('settings.gradle.kts')
 	},
-	lua_ls = handler {
-		settings = {
-			Lua = {
-				-- runtime = {
-				-- 	version = 'LuaJIT',
-				-- },
-				workspace = {
-					checkThirdParty = false,
-					library = vim.api.nvim_get_runtime_file('', true),
-					-- library = {
-					-- 	'/Users/marcin/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
-					-- 	-- it has to be at the end of the table
-					-- 	table.unpack(vim.api.nvim_get_runtime_file('', true)),
-					-- }
-				},
-				telemetry = {
-					enable = false,
-				},
-			}
-		}
-	},
+	-- lua_ls = handler {
+	-- 	settings = {
+	-- 		Lua = {
+	-- 			-- runtime = {
+	-- 			-- 	version = 'LuaJIT',
+	-- 			-- },
+	-- 			workspace = {
+	-- 				checkThirdParty = false,
+	-- 				library = vim.api.nvim_get_runtime_file('', true),
+	-- 				-- library = {
+	-- 				-- 	'/Users/marcin/.hammerspoon/Spoons/EmmyLua.spoon/annotations',
+	-- 				-- 	-- it has to be at the end of the table
+	-- 				-- 	table.unpack(vim.api.nvim_get_runtime_file('', true)),
+	-- 				-- }
+	-- 			},
+	-- 			telemetry = {
+	-- 				enable = false,
+	-- 			},
+	-- 		}
+	-- 	}
+	-- },
 	pylsp = handler {
 		settings = {
 			pylsp = {
@@ -96,9 +73,8 @@ mason_lspconfig.setup_handlers {
 			}
 		}
 	},
-	tsserver = handler {
+	ts_ls = handler {
 		on_attach = function(client, bufnr)
-			lsp_attach(client, bufnr)
 			local util = vim.lsp.util
 			vim.keymap.set('n', 'gd', function()
 				client.request('workspace/executeCommand',
@@ -113,6 +89,18 @@ mason_lspconfig.setup_handlers {
 			end, { buffer = bufnr, noremap = true, silent = true })
 		end
 	},
+	basedpyright = handler {
+		settings = {
+			basedpyright = {
+				analysis = {
+					diagnosticSeverityOverrides = {
+						reportInvalidTypeForm = 'warning',
+						reportDeprecated = 'warning',
+					}
+				}
+			}
+		}
+	},
 }
 
-handler { cmd = {'/opt/local/bin/clangd-mp-17'} } ('clangd')
+-- handler { cmd = {'/opt/local/bin/clangd-mp-17'} } ('clangd')

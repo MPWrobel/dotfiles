@@ -29,6 +29,7 @@ local kind = {
   TypeParameter = "󰅲",
 }
 
+require('cmp').setup()
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup {
@@ -61,6 +62,7 @@ cmp.setup {
 		end,
 	},
 	sources = {
+		{ name = 'lazydev' },
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
 		{ name = 'buffer' },
@@ -70,11 +72,13 @@ cmp.setup {
 		entries = { name = 'custom', selection_order = 'near_cursor' }
 	},
 	formatting = {
+		expandable_indicator = true,
 		fields = { 'kind', 'abbr', 'menu' },
 		format = function(entry, vim_item)
 			vim_item.abbr = string.format('%.32s', vim_item.abbr)
 			vim_item.kind = kind[vim_item.kind]
 			vim_item.menu = ({
+				lazydev = '[Lazy]',
 				buffer = '[Buffer]',
 				nvim_lsp = '[LSP]',
 				luasnip = '[LuaSnip]',

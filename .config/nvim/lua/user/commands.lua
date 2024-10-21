@@ -3,4 +3,5 @@ vim.api.nvim_create_user_command(
 	function(cmd)
 		vim.api.nvim_command("bel sp | exe 'term make " .. cmd.args .. "' | $")
 	end,
-	{ nargs = '*' })
+	{ nargs = '*' }
+)

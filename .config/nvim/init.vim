@@ -34,9 +34,6 @@ set nowrap
 set linebreak
 set breakindent
 
-" set list
-" set listchars=tab:\ \ ,lead:·,trail:·
-
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
@@ -73,23 +70,9 @@ noremap <ScrollWheelDown> <C-e>
 noremap <Leader>tt <Cmd>TroubleToggle<CR>
 noremap <Leader>td <Cmd>TodoLocList<CR>
 
-" Telescope
-noremap <Leader><Leader> <Cmd>Telescope buffers<CR>
-noremap <Leader>ff <Cmd>Telescope find_files<CR>
-noremap <Leader>fb <Cmd>Telescope current_buffer_fuzzy_find<CR>
-noremap <Leader>fr <Cmd>Telescope oldfiles<CR>
-noremap <Leader>fg <Cmd>Telescope live_grep<CR>
-noremap <Leader>ft <Cmd>Telescope filetypes<CR>
-noremap <Leader>fm <Cmd>Telescope man_pages<CR>
-noremap <Leader>fh <Cmd>Telescope help_tags<CR>
-noremap z= <Cmd>Telescope spell_suggest<CR>
-
-" LaTeX
-noremap <Leader>vc <Cmd>VimtexCompile<CR>
-
-" Git
-noremap <Leader>g <Cmd>Neogit<CR>
-
 lua require 'user.plugins'
 lua require 'user.commands'
-colorscheme kanagawabones
+
+let g:zig_fmt_autosave = 0
+
+highlight Normal guibg=none

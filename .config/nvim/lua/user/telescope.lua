@@ -1,7 +1,9 @@
-local actions = require('telescope.actions')
-local layout = require('telescope.actions.layout')
+local telescope = require 'telescope'
+local actions = require 'telescope.actions'
+local layout = require 'telescope.actions.layout'
 
-require('telescope').setup {
+telescope.load_extension('fzf')
+telescope.setup {
 	defaults = {
 		layout_strategy = 'flex',
 		mappings = {
